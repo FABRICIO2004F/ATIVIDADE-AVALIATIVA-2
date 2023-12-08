@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+int validaQuantidade() {
+    int quantidade;
+    do {
+        printf("Informe a quantidade de peças fabricadas: ");
+        scanf("%d", &quantidade);
+        if (quantidade < 0) {
+            printf("Quantidade inválida. Por favor, informe um valor não negativo.\n");
+        }
+    } while (quantidade < 0);
+
+    return quantidade;
+}
+
+float calculaSalario(int quantidade) {
+    const float salarioBase = 600.0;
+    const int limite1 = 50;
+    const int limite2 = 80;
+    const float adicional1 = 0.50;
+    const float adicional2 = 0.75;
+
+    float salarioTotal = salarioBase;
+
+    if (quantidade > limite1) {
+        salarioTotal += (quantidade - limite1) * adicional1;
+
+        if (quantidade > limite2) {
+            salarioTotal += (quantidade - limite2) * (adicional2 - adicional1);
+        }
+    }
+
+    return salarioTotal;
+}
+
+void mostraFinal(int numeroFuncionario, float salario) {
+    printf("Funcionário %d - Salário Total: R$ %.2f\n", numeroFuncionario, salario);
+}
+
+int main() {
+    int numeroFuncionario = 1;
+
+    while (1) {
+        printf("\nFuncionário %d\n", numeroFuncionario);
+        int quantidade = validaQuantidade();
+        float salarioTotal = calculaSala
